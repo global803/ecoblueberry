@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Blueberry — Свіжа лохина з поля</title>
+    <style>
+        /* ФІРМОВІ КОЛЬОРИ ТА БАЗОВІ СТИЛІ */
+        :root {
+            --eco-green: #4CAF50;
+            --eco-green-hover: #45a049;
+            --blueberry-blue: #102A43;
+            --blueberry-light: #243E56;
+            --text-dark: #334E68;
+            --bg-light: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('background 1.png'), url('background 1.PNG');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ШАПКА САЙТУ */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 10px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text .eco { color: var(--eco-green); }
+        .logo-text .blueberry { color: var(--blueberry-blue); }
+
+        .contacts-zone {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-phone a {
+            color: var(--blueberry-blue);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border: 2px solid var(--eco-green);
+            padding: 8px 15px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .contact-phone a:hover {
+            background-color: var(--eco-green);
+            color: white;
+        }
+
+        .viber-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #7351B2;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 15px;
+            transition: background 0.3s;
+            gap: 8px;
+        }
+
+        .viber-btn:hover { background-color: #5e3f99; }
+        .viber-icon { width: 20px; height: 20px; fill: white; }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 50px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.85);
+            margin: 30px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            color: var(--blueberry-blue);
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .hero p { 
+            font-size: 19px; 
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: var(--blueberry-light);
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border: 1px solid #C8E6C9;
+        }
+
+        /* БЛОК КОРИСТІ */
+        .benefits {
+            background: var(--bg-light);
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--blueberry-blue);
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 4px solid var(--eco-green);
+        }
+
+        .benefit-card h3 { color: var(--blueberry-blue); }
+
+        /* КАРТКИ ТОВАРІВ */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e1e8ed;
+        }
+
+        .product-info {
+            padding: 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            color: var(--blueberry-blue);
+            font-size: 22px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .berry-prefix { color: #2196F3; font-weight: bold; }
+        .product-price { font-size: 24px; font-weight: bold; color: var(--blueberry-blue); margin-bottom: 20px; }
+
+        .quantity-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .qty-btn {
+            background-color: #f0f4f8;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--blueberry-blue);
+        }
+
+        .qty-value { font-size: 18px; font-weight: bold; width: 30px; }
+
+        .btn-add {
+            background-color: var(--eco-green);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .btn-add:hover { background-color: var(--eco-green-hover); }
+
+        /* ОФОРМЛЕННЯ ЗАМОВЛЕННЯ */
+        .checkout-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .order-summary {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .discount-text { color: var(--eco-green); font-weight: bold; }
+         
+        .total-row {
+            border-top: 2px solid #cbd5e1;
+            padding-top: 15px;
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--blueberry-blue);
+            margin-bottom: 15px;
+        }
+
+        .btn-clear-cart {
+            background: none;
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: auto;
+            text-align: center;
+        }
+        .btn-clear-cart:hover { background-color: #ef4444; color: white; }
+
+        .order-form { display: flex; flex-direction: column; gap: 15px; }
+        .form-group { display: flex; flex-direction: column; gap: 5px; }
+        .form-group label { font-weight: 600; color: var(--blueberry-blue); }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .payment-info {
+            background-color: #e6f6ff;
+            border: 1px solid #bae3ff;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .limit-error-msg {
+            background-color: #FFF3E0;
+            color: #E65100;
+            border: 1px solid #FFE0B2;
+            padding: 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+            font-size: 15px;
+            line-height: 1.5;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .btn-submit {
+            background-color: var(--blueberry-blue);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover { background-color: var(--blueberry-light); }
+        .btn-submit:disabled { background-color: #cbd5e1; cursor: not-allowed; opacity: 0.6; }
+
+        /* ПАНЕЛЬ УПРАВЛІННЯ АДМІНІСТРАТОРА */
+        .admin-section {
+            background: #ffffff;
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 2px solid var(--blueberry-blue);
+            display: none;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .admin-table th, .admin-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .admin-table th { background-color: var(--blueberry-blue); color: white; }
+        .admin-table tr:nth-child(even) { background-color: #f8fafc; }
+        
+        /* Стилі для виконаних рядків */
+        .admin-table tr.completed-order {
+            background-color: #e2e8f0 !important;
+            color: #64748b;
+        }
+        .admin-table tr.completed-order td {
+            text-decoration: line-through;
+        }
+        .admin-table tr.completed-order td:last-child {
+            text-decoration: none !important; /* Кнопки не закреслюємо */
+        }
+
+        .field-summary-box {
+            background-color: #F0F4F8;
+            border: 2px dashed var(--eco-green);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        .field-summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .field-summary-box h3 { color: var(--blueberry-blue); margin-bottom: 0; }
+        .field-summary-grid { display: flex; gap: 25px; font-size: 16px; font-weight: bold; flex-wrap: wrap; align-items: center; }
+
+        .limit-setter-zone {
+            background: #fff;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .limit-input {
+            width: 60px;
+            padding: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #9fb3c8;
+            border-radius: 4px;
+            color: var(--blueberry-blue);
+        }
+
+        .btn-admin-action { padding: 10px 20px; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; }
+        .btn-close { background-color: #64748b; color: white; }
+        .btn-field-print { background-color: var(--eco-green); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; }
+        .btn-field-print:hover { background-color: var(--eco-green-hover); }
+        
+        .btn-table-print { background-color: #2196F3; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; margin-right: 3px; }
+        .btn-table-complete { background-color: #10B981; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; margin-right: 3px; }
+        .btn-table-delete { background-color: #EF4444; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-table-complete:hover { background-color: #059669; }
+        .btn-table-delete:hover { background-color: #DC2626; }
+        
+        .loading-text { color: var(--blueberry-light); font-weight: bold; animation: blink 1.5s infinite; }
+
+        @keyframes blink { 0% {opacity: 0.4;} 50% {opacity: 1;} 100% {opacity: 0.4;} }
+
+        footer {
+            background-color: rgba(16, 42, 67, 0.95);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        .admin-login-link { display: inline-block; margin-top: 15px; color: #9fb3c8; cursor: pointer; text-decoration: none; }
+
+        /* СТИЛІ ДЛЯ ІЗОЛЬОВАНОГО ДРУКУ */
+        #print-invoice-zone, #print-field-zone { display: none; }
+
+        @media print {
+            body * { display: none !important; }
+            #print-invoice-zone, #print-invoice-zone *, #print-field-zone, #print-field-zone * { display: block !important; }
+            
+            .print-container {
+                padding: 20px;
+                font-family: monospace;
+                color: #000;
+                background: white;
+                width: 100%;
+                box-shadow: none !important;
+            }
+            .print-line { border-bottom: 1px dashed #000; margin: 12px 0; }
+            .print-title { font-size: 20px; font-weight: bold; text-align: center; margin-bottom: 8px; }
+            .print-section-title { font-size: 16px; font-weight: bold; margin: 12px 0 4px 0; }
+        }
+
+        @media (max-width: 768px) {
+            .header-flex { flex-direction: column; gap: 15px; text-align: center; }
+            .contacts-zone { flex-direction: column; gap: 10px; }
+            .admin-table { display: block; overflow-x: auto; }
+            .field-summary-grid { flex-direction: column; gap: 10px; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <div class="logo-block">
+                <img src="Logo EB.png" onerror="this.onerror=null; this.src='Logo EB.PNG';" alt="Eco Blueberry Логотип" class="logo-img">
+                <div class="logo-text">
+                    <span class="eco">Eco</span><span class="blueberry">Blueberry</span>
+                </div>
+            </div>
+            <div class="contacts-zone">
+                <a href="viber://chat?number=%2B380979341222" class="viber-btn" target="_blank">
+                    <svg class="viber-icon" viewBox="0 0 24 24">
+                        <path d="M23.993 11.926c0 6.592-5.367 11.939-11.986 11.939-2.072 0-4.019-.531-5.727-1.462l-5.148 1.545 1.575-5.012c-1.035-1.748-1.634-3.791-1.634-5.974 0-6.591 5.367-11.939 11.986-11.939 6.619 0 11.986 5.348 11.986 11.939zm-15.655.22c-.227-.374-.634-.582-1.077-.549-.444.032-.821.291-1.002.693-.418.932-.143 2.656.784 4.314.928 1.658 2.378 3.109 4.148 3.535.408.098.835-.045 1.104-.37.269-.324.321-.777.135-1.15l-1.049-2.094c-.198-.396-.649-.607-1.082-.505-.231.054-.457.179-.64.364l-.326.326c-.461-.269-1.055-.747-1.503-1.196-.448-.448-.926-1.042-1.195-1.503l.326-.326c.269-.269.362-.673.231-1.03l-1.004-2.055z"/>
+                    </svg>
+                    Написати у Viber
+                </a>
+                <div class="contact-phone">
+                    <a href="tel:+380979341222">📞 +380 97 934 12 22</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section class="hero">
+            <div class="status-badge">🟢 Збір о 5:00 ранку — доставка в день збору!</div>
+            <h1>Екологічно чиста лохина преміум якості</h1>
+            <p>Натуральна лохина з домашнього господарства, без шкідливих обробок</p>
+            <div class="status-badge" style="background-color: #FFF9C4; color: #F57F17; border-color: #FFF59D;">🎁 Постійним клієнтам знижка 5% при замовленні від 1 кг!</div>
+        </section>
+
+        <section class="benefits">
+            <h2 class="section-title">Чому наша лохина — це найкращий вибір?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Потужний антиоксидант</h3>
+                    <p>Зміцнює імунітет та захищає клітини організму від стресу.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Гострота зору</h3>
+                    <p>Зміцнює зір та знімає втому очей після тривалої роботи.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Здорове серце</h3>
+                    <p>Нормалізує тиск та дбайливо зміцнює стінки судин.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>100% Натурально</h3>
+                    <p>Дбайливий ручний збір, що зберігає природний захисний наліт ягоди.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Оберіть свій формат лотка</h2>
+            <div class="products-grid">
+                
+                <div class="product-card">
+                    <div class="product-info">
+                        <h3 class="product-title"><span class="berry-prefix">🍇</span> Лоток 250 грам</h3>
+                        <p style="margin-bottom: 15px; color:#627D98;">Зручний формат для швидкого перекусу</p>
+                        <div class="product-price">100 грн</div>
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="changeQty('p250', -1)">-</button>
+                            <span class="qty-value" id="qty-p250">0</span>
+                            <button class="qty-btn" onclick="changeQty('p250', 1)">+</button>
+                        </div>
+                        <button class="btn-add" onclick="updateCart()">Оновити у кошику</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-info">
+                        <h3 class="product-title"><span class="berry-prefix">🍇</span> Лоток 500 грам</h3>
+                        <p style="margin-bottom: 15px; color:#627D98;">Оптимальний вибір для частування дітей</p>
+                        <div class="product-price">200 грн</div>
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="changeQty('p500', -1)">-</button>
+                            <span class="qty-value" id="qty-p500">0</span>
+                            <button class="qty-btn" onclick="changeQty('p500', 1)">+</button>
+                        </div>
+                        <button class="btn-add" onclick="updateCart()">Оновити у кошику</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-info">
+                        <h3 class="product-title"><span class="berry-prefix">🍇</span> Сімейний лоток 1 кг</h3>
+                        <p style="margin-bottom: 15px; color:#627D98;">Для великої родини або заморозки</p>
+                        <div class="product-price">400 грн</div>
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="changeQty('p1000', -1)">-</button>
+                            <span class="qty-value" id="qty-p1000">0</span>
+                            <button class="qty-btn" onclick="changeQty('p1000', 1)">+</button>
+                        </div>
+                        <button class="btn-add" onclick="updateCart()">Оновити у кошику</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="checkout-section">
+            <h2 class="section-title">Оформлення замовлення</h2>
+            <div class="checkout-grid">
+                
+                <div class="order-summary">
+                    <h3 style="color: var(--blueberry-blue); margin-bottom: 15px;">Ваше замовлення:</h3>
+                    <div class="summary-item">
+                        <span>Загальна вага:</span>
+                        <span id="summary-weight">0 кг</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Початкова сума:</span>
+                        <span id="summary-subtotal">0 грн</span>
+                    </div>
+                    <div class="summary-item" id="discount-row" style="display: none;">
+                        <span class="discount-text">Знижка 5% (від 1кг):</span>
+                        <span class="discount-text" id="summary-discount">-0 грн</span>
+                    </div>
+                    <div class="total-row">
+                        <span>До сплати:</span>
+                        <span id="summary-total">0 грн</span>
+                    </div>
+                    <button type="button" class="btn-clear-cart" onclick="clearCustomerCart()">🧹 Очистити кошик</button>
+                </div>
+
+                <div>
+                    <form class="order-form" id="main-order-form" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="client-name">Прізвище та Ім'я замовника *</label>
+                            <input type="text" id="client-name" required placeholder="Петренко Іван">
+                        </div>
+                        <div class="form-group">
+                            <label for="client-phone">Номер телефону *</label>
+                            <input type="tel" id="client-phone" required placeholder="+380979341222" value="+380" pattern="^\+380\d{9}$" title="Номер повинен починатися з +380 та містити ще 9 цифр.">
+                        </div>
+                        <div class="form-group">
+                            <label for="client-location">Місце доставки *</label>
+                            <input type="text" id="client-location" required placeholder="напр: м.Виноградів">
+                        </div>
+                        <div class="form-group">
+                            <label for="client-comment">Коментар до замовлення</label>
+                            <textarea id="client-comment" rows="2" placeholder="напр: доставка після 18:00..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-method">Спосіб оплати *</label>
+                            <select id="payment-method" onchange="togglePaymentInfo()" required>
+                                <option value="cash">Готівка при отриманні</option>
+                                <option value="privat">На картку ПриватБанку</option>
+                                <option value="ukrsib">На картку Укрсиббанку</option>
+                            </select>
+                            
+                            <div id="card-privat-details" class="payment-info">
+                                💳 Картка ПриватБанку: <strong>0000 0000 0000 0000</strong>
+                            </div>
+                            <div id="card-ukrsib-details" class="payment-info">
+                                💳 Картка Укрсиббанку: <strong>0000 0000 0000 0000</strong>
+                            </div>
+                        </div>
+
+                        <div id="limit-error-block" class="limit-error-msg"></div>
+
+                        <button type="submit" id="submit-order-btn" class="btn-submit">Підтвердити замовлення</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="admin-section" id="admin-panel">
+            <h2 style="color: var(--blueberry-blue); border-bottom: 2px solid var(--blueberry-blue); padding-bottom: 10px;">
+                📦 Панель управління замовленнями (Синхронізовано з Google Диском)
+            </h2>
+            
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Клієнт</th>
+                        <th>Телефон</th>
+                        <th>Адреса доставки</th>
+                        <th>Замовлення</th>
+                        <th>Коментар</th>
+                        <th>Оплата</th>
+                        <th>Сума</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-orders-body">
+                    <tr><td colspan="9" class="loading-text" style="text-align:center;">🔄 Завантаження замовлень з нової таблиці ecoblueberrytab...</td></tr>
+                </tbody>
+            </table>
+
+            <div class="field-summary-box">
+                <div class="field-summary-header">
+                    <h3>📊 ЗАГАЛОМ ДО ЗБОРУ НА ПОЛІ:</h3>
+                    
+                    <div class="limit-setter-zone">
+                        <label for="admin-limit-input" style="font-size:14px; font-weight:bold; color:var(--blueberry-blue);">⚙️ Денний ліміт збору:</label>
+                        <input type="number" id="admin-limit-input" class="limit-input" min="1" step="0.5" onchange="saveNewLimit(this.value)">
+                        <span style="font-size:14px; font-weight:bold; color:var(--blueberry-blue);">кг</span>
+                    </div>
+
+                    <button class="btn-field-print" onclick="printFieldTask()">🖨️ Друк списку збору</button>
+                </div>
+                <div class="field-summary-grid">
+                    <div>Лотків 250г: <span id="total-250-count" style="color:var(--eco-green);">0</span> шт</div>
+                    <div>Лотків 500г: <span id="total-500-count" style="color:var(--eco-green);">0</span> шт</div>
+                    <div>Лотків 1кг: <span id="total-1000-count" style="color:var(--eco-green);">0</span> шт</div>
+                    <div style="border-left: 2px solid #cbd5e1; padding-left: 20px; color: var(--blueberry-blue);">
+                        Всього чистої ягоди: <span id="total-field-weight">0.00</span> кг / <strong id="admin-limit-label" style="color: #ef4444;">макс. 10 кг</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-actions" style="margin-top: 20px;">
+                <button class="btn-admin-action btn-close" onclick="closeAdminPanel()">Закрити панель</button>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="print-invoice-zone" class="print-container"></div>
+    <div id="print-field-zone" class="print-container"></div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Eco Blueberry. Всі права захищені.</p>
+            <span class="admin-login-link" onclick="loginAdmin()">🔒 Вхід для адміна</span>
+        </div>
+    </footer>
+
+    <script>
+        // АКТУАЛЬНА URL-АДРЕСА ВЕБ-ДОДАТКА (ВЕРСІЯ 3)
+        const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwFzwYKAqBJPp264TNZwo59rdd4O83K8cmDlkPrNCs0qnOUAhmjpjr9RK9fDuZ3eZ3U/exec';
+
+        const cart = { p250: 0, p500: 0, p1000: 0 };
+        let globalOrdersArray = []; 
+
+        function getDailyLimit() {
+            const savedLimit = localStorage.getItem('eco_blueberry_daily_limit');
+            return savedLimit ? parseFloat(savedLimit) : 10.0;
+        }
+
+        function saveNewLimit(val) {
+            let num = parseFloat(val);
+            if (isNaN(num) || num <= 0) num = 10.0;
+            localStorage.setItem('eco_blueberry_daily_limit', num.toFixed(1));
+            document.getElementById('admin-limit-label').innerText = `макс. ${num.toFixed(1)} кг`;
+            updateCart();
+        }
+
+        function getAlreadyOrderedWeight() {
+            let totalWeight = 0;
+            globalOrdersArray.forEach(order => {
+                // Рахуємо ліміт тільки по тих замовленнях, що мають активний статус
+                if (order.status !== "Виконано") {
+                    let match = order.weight.match(/([\d.]+)\s*кг/);
+                    if (match) {
+                        totalWeight += parseFloat(match[1]);
+                    }
+                }
+            });
+            return totalWeight;
+        }
+
+        function changeQty(productId, direction) {
+            const currentQty = cart[productId];
+            const newQty = currentQty + direction;
+            if (newQty >= 0) {
+                cart[productId] = newQty;
+                document.getElementById(`qty-${productId}`).innerText = newQty;
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            const currentCartWeight = (cart.p250 * 0.25) + (cart.p500 * 0.5) + (cart.p1000 * 1.0);
+            const alreadyOrderedWeight = getAlreadyOrderedWeight();
+            const dailyLimit = getDailyLimit();
+            const totalWithCurrent = alreadyOrderedWeight + currentCartWeight;
+
+            const subtotal = (cart.p250 * 100) + (cart.p500 * 200) + (cart.p1000 * 400);
+            let discount = 0;
+            if (currentCartWeight >= 1.0) {
+                discount = Math.round(subtotal * 0.05);
+                document.getElementById('discount-row').style.display = 'flex';
+            } else {
+                document.getElementById('discount-row').style.display = 'none';
+            }
+
+            const total = subtotal - discount;
+
+            document.getElementById('summary-weight').innerText = `${currentCartWeight.toFixed(2)} кг`;
+            document.getElementById('summary-subtotal').innerText = `${subtotal} грн`;
+            document.getElementById('summary-discount').innerText = `-${discount} грн`;
+            document.getElementById('summary-total').innerText = `${total} грн`;
+
+            const errorBlock = document.getElementById('limit-error-block');
+            const submitBtn = document.getElementById('submit-order-btn');
+
+            if (alreadyOrderedWeight >= dailyLimit) {
+                errorBlock.innerHTML = `⚠️ <strong>Щиро перепрошуємо за незручності!</strong><br>На сьогодні денний ліміт збору ягоди (${dailyLimit.toFixed(1)} кг) вже повністю вичерпано нашими силами.<br><br>🌿 Ми збираємо лохину вручну на світанку, щоб ви отримували її максимально свіжою. Будь ласка, зробіть замовлення на наступний день збору або напишіть нам у Viber для резерву!`;
+                errorBlock.style.display = 'block';
+                submitBtn.disabled = true;
+            } else if (totalWithCurrent > dailyLimit && currentCartWeight > 0) {
+                const availableKg = dailyLimit - alreadyOrderedWeight;
+                errorBlock.innerHTML = `🚫 <strong>Ой, замовлення занадто велике!</strong><br>До повного денного ліміту збору залишилося всього <strong>${availableKg.toFixed(2)} кг</strong> ягоди.<br><br>Будь ласка, зменшіть кількість лотків у кошику, щоб ми точно встигли зібрати їх для вас зранку!`;
+                errorBlock.style.display = 'block';
+                submitBtn.disabled = true;
+            } else {
+                errorBlock.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        }
+
+        function clearCustomerCart() {
+            cart.p250 = 0; cart.p500 = 0; cart.p1000 = 0;
+            document.getElementById('qty-p250').innerText = 0;
+            document.getElementById('qty-p500').innerText = 0;
+            document.getElementById('qty-p1000').innerText = 0;
+            updateCart();
+        }
+
+        function togglePaymentInfo() {
+            const method = document.getElementById('payment-method').value;
+            document.getElementById('card-privat-details').style.display = (method === 'privat') ? 'block' : 'none';
+            document.getElementById('card-ukrsib-details').style.display = (method === 'ukrsib') ? 'block' : 'none';
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const currentCartWeight = (cart.p250 * 0.25) + (cart.p500 * 0.5) + (cart.p1000 * 1.0);
+            if (currentCartWeight === 0) {
+                alert('Будь ласка, додайте лохину до кошика перед підтвердженням!');
+                return;
+            }
+
+            const name = document.getElementById('client-name').value;
+            const phone = document.getElementById('client-phone').value;
+            const location = document.getElementById('client-location').value;
+            const comment = document.getElementById('client-comment').value;
+            
+            const methodVal = document.getElementById('payment-method').value;
+            let payment = 'Готівка';
+            if(methodVal === 'privat') payment = 'Картка Приват';
+            if(methodVal === 'ukrsib') payment = 'Картка Укрсіб';
+            
+            const finalSum = document.getElementById('summary-total').innerText;
+
+            let itemsDesc = [];
+            if(cart.p250 > 0) itemsDesc.push(`250г: ${cart.p250}шт`);
+            if(cart.p500 > 0) itemsDesc.push(`500г: ${cart.p500}шт`);
+            if(cart.p1000 > 0) itemsDesc.push(`1кг: ${cart.p1000}шт`);
+
+            const newOrder = {
+                date: new Date().toLocaleString('uk-UA'),
+                name: name,
+                phone: phone,
+                location: location,
+                comment: comment ? comment : '—',
+                items: itemsDesc.join(', '),
+                weight: `${currentCartWeight.toFixed(2)} кг`,
+                payment: payment,
+                total: finalSum
+            };
+
+            if (googleScriptUrl) {
+                fetch(googleScriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newOrder)
+                }).then(() => {
+                    alert(`Дякуємо, ${name}! Ваше замовлення прийнято й успішно записано на Google Диск.`);
+                    if(document.getElementById('admin-panel').style.display === 'block') {
+                        fetchOrdersFromGoogle();
+                    } else {
+                        newOrder.status = "Активне";
+                        globalOrdersArray.push(newOrder);
+                        clearCustomerCart();
+                    }
+                    document.getElementById('client-name').value = '';
+                    document.getElementById('client-location').value = '';
+                    document.getElementById('client-comment').value = '';
+                    document.getElementById('client-phone').value = '+380';
+                }).catch(err => alert('Помилка мережі. Спробуйте ще раз!'));
+            }
+        }
+
+        function loginAdmin() {
+            const password = prompt('Введіть пароль адміністратора:');
+            if (password === '1111') {
+                document.getElementById('admin-panel').style.display = 'block';
+                const currentLimit = getDailyLimit();
+                document.getElementById('admin-limit-input').value = currentLimit;
+                document.getElementById('admin-limit-label').innerText = `макс. ${currentLimit.toFixed(1)} кг`;
+                
+                fetchOrdersFromGoogle();
+                document.getElementById('admin-panel').scrollIntoView({ behavior: 'smooth' });
+            } else if (password !== null) {
+                alert('Невірний пароль!');
+            }
+        }
+
+        function fetchOrdersFromGoogle() {
+            const ordersBody = document.getElementById('admin-orders-body');
+            ordersBody.innerHTML = `<tr><td colspan="9" class="loading-text" style="text-align:center;">🔄 Завантаження замовлень з нової таблиці ecoblueberrytab...</td></tr>`;
+
+            fetch(googleScriptUrl)
+                .then(res => res.json())
+                .then(data => {
+                    if(Array.isArray(data)) {
+                        globalOrdersArray = data;
+                        renderAdminOrders();
+                    } else {
+                        ordersBody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:red;">Помилка структури бази даних Google.</td></tr>`;
+                    }
+                }).catch(err => {
+                    ordersBody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:red;">Не вдалося завантажити дані. Перевірте доступ "Усі" у вікні Apps Script.</td></tr>`;
+                });
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('admin-panel').style.display = 'none';
+        }
+
+        // КЕРУВАННЯ СТАТУСАМИ ТА ВИДАЛЕННЯМ РЯДКІВ
+
+        function setOrderComplete(rowId) {
+            if(!confirm("Позначити це замовлення як виконане? Воно збережеться в таблиці, але спишеться з активного плану збору ягоди.")) return;
+            
+            fetch(googleScriptUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: "complete", id: rowId })
+            }).then(() => {
+                alert("Замовлення успішно виконано!");
+                fetchOrdersFromGoogle(); 
+            }).catch(err => alert("Помилка зміни статусу."));
+        }
+
+        function deleteOrderRow(rowId) {
+            if(!confirm("⚠️ Ви впевнені, що хочете БЕЗПОВОРОТНО ВИДАЛИТИ це замовлення з Google Таблиці?")) return;
+            
+            fetch(googleScriptUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: "delete", id: rowId })
+            }).then(() => {
+                alert("Замовлення видалено з Google Диску!");
+                fetchOrdersFromGoogle(); 
+            }).catch(err => alert("Помилка видалення рядка."));
+        }
+
+        function renderAdminOrders() {
+            const ordersBody = document.getElementById('admin-orders-body');
+            ordersBody.innerHTML = '';
+            
+            let field250 = 0, field500 = 0, field1000 = 0;
+
+            if (globalOrdersArray.length === 0) {
+                ordersBody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:#9fb3c8;">Нова таблиця порожня. Замовлень немає.</td></tr>`;
+                updateFieldSummary(0, 0, 0);
+                return;
+            }
+
+            globalOrdersArray.forEach((order, index) => {
+                const isCompleted = order.status === "Виконано";
+
+                // Рахуємо сумарні показники для поля лише з АКТИВНИХ (невиконаних) замовлень
+                if (!isCompleted) {
+                    if(order.items.includes('250г:')) {
+                        let match = order.items.match(/250г:\s*(\d+)шт/);
+                        if(match) field250 += parseInt(match[1]);
+                    }
+                    if(order.items.includes('500г:')) {
+                        let match = order.items.match(/500г:\s*(\d+)шт/);
+                        if(match) field500 += parseInt(match[1]);
+                    }
+                    if(order.items.includes('1кг:')) {
+                        let match = order.items.match(/1кг:\s*(\d+)шт/);
+                        if(match) field1000 += parseInt(match[1]);
+                    }
+                }
+
+                const tr = document.createElement('tr');
+                if (isCompleted) {
+                    tr.classList.add('completed-order');
+                }
+                
+                tr.innerHTML = `
+                    <td>${order.date}</td>
+                    <td><strong>${order.name}</strong></td>
+                    <td><a href="tel:${order.phone}">${order.phone}</a></td>
+                    <td><strong>${order.location}</strong></td>
+                    <td>${order.items}</td>
+                    <td style="font-style:italic;">${order.comment}</td>
+                    <td>${order.payment}</td>
+                    <td style="color:var(--eco-green); font-weight:bold;">${order.total}</td>
+                    <td>
+                        <button class="btn-table-print" onclick="printInvoice(${index})">Друк</button>
+                        ${!isCompleted ? `<button class="btn-table-complete" onclick="setOrderComplete(${order.id})">✅ Виконано</button>` : ''}
+                        <button class="btn-table-delete" onclick="deleteOrderRow(${order.id})">❌ Видалити</button>
+                    </td>
+                `;
+                ordersBody.appendChild(tr);
+            });
+
+            updateFieldSummary(field250, field500, field1000);
+        }
+
+        function updateFieldSummary(c250, c500, c1000) {
+            document.getElementById('total-250-count').innerText = c250;
+            document.getElementById('total-500-count').innerText = c500;
+            document.getElementById('total-1000-count').innerText = c1000;
+            
+            let totalActiveWeight = 0;
+            globalOrdersArray.forEach(o => {
+                if (o.status !== "Виконано") {
+                    let match = o.weight.match(/([\d.]+)\s*кг/);
+                    if (match) totalActiveWeight += parseFloat(match[1]);
+                }
+            });
+            
+            document.getElementById('total-field-weight').innerText = totalActiveWeight.toFixed(2);
+            const currentLimit = getDailyLimit();
+            document.getElementById('admin-limit-label').innerText = `макс. ${currentLimit.toFixed(1)} кг`;
+            updateCart();
+        }
+
+        function printInvoice(index) {
+            const order = globalOrdersArray[index];
+            if(!order) return;
+
+            document.getElementById('print-field-zone').innerHTML = "";
+            document.getElementById('print-field-zone').style.display = 'none';
+            
+            const printZone = document.getElementById('print-invoice-zone');
+            printZone.style.display = 'block';
+            
+            printZone.innerHTML = `
+                <div class="print-title">🌿 ECO BLUEBERRY — НАКЛАДНА</div>
+                <div style="text-align:center; font-size:12px;">Урожай 2026. Свіжість з поля!</div>
+                <div class="print-line"></div>
+                <div><strong>Дата:</strong> ${order.date}</div>
+                <div><strong>Клієнт:</strong> ${order.name}</div>
+                <div><strong>Телефон:</strong> ${order.phone}</div>
+                <div><strong>Адреса доставки:</strong> ${order.location}</div>
+                <div class="print-line"></div>
+                <div class="print-section-title">📦 ЩО ЗІБРАТИ В ПОЛІ:</div>
+                <div style="font-size: 16px; font-weight: bold;">${order.items}</div>
+                <div class="print-line"></div>
+                <div><strong>Коментар клієнта:</strong> "${order.comment}"</div>
+                <div class="print-line"></div>
+                <div><strong>Оплата:</strong> ${order.payment}</div>
+                <div style="font-size: 18px; font-weight: bold;">ДО СПЛАТИ: ${order.total}</div>
+                <div class="print-line"></div>
+                <div style="text-align: center; font-size: 11px; margin-top:20px;">Дякуємо за замовлення!</div>
+            `;
+            window.print();
+        }
+
+        function printFieldTask() {
+            const c250 = document.getElementById('total-250-count').innerText;
+            const c500 = document.getElementById('total-500-count').innerText;
+            const c1000 = document.getElementById('total-1000-count').innerText;
+            const totalWeight = document.getElementById('total-field-weight').innerText;
+            const currentLimit = getDailyLimit();
+            const currentTime = new Date().toLocaleString('uk-UA');
+
+            document.getElementById('print-invoice-zone').innerHTML = "";
+            document.getElementById('print-invoice-zone').style.display = 'none';
+            
+            const printFieldZone = document.getElementById('print-field-zone');
+            printFieldZone.style.display = 'block';
+
+            printFieldZone.innerHTML = `
+                <div class="print-title">🚜 ECO BLUEBERRY — НАРЯД НА ЗБІР</div>
+                <div style="text-align:center; font-size:12px;">Сформовано: ${currentTime}</div>
+                <div class="print-line"></div>
+                <div style="text-align:center; font-size:14px; margin-bottom:10px;"><strong>ПЛАН РОБОТИ НА ПЛАНТАЦІЇ</strong></div>
+                <div class="print-line"></div>
+                
+                <div class="print-section-title">📦 НЕОБХІДНА ТАРА ТА ФАСУВАННЯ:</div>
+                <div style="font-size: 18px; margin: 10px 0;">🔹 Лоток 250 грам -------> <strong>${c250} шт.</strong></div>
+                <div style="font-size: 18px; margin: 10px 0;">🔹 Лоток 500 грам -------> <strong>${c500} шт.</strong></div>
+                <div style="font-size: 18px; margin: 10px 0;">🔹 Лоток 1 кілограм -----> <strong>${c1000} шт.</strong></div>
+                
+                <div class="print-line"></div>
+                <div style="font-size: 20px; font-weight: bold; text-align: center; background-color: #f0f4f8; padding: 10px;">
+                    ⚖️ ВСЬОГО ЗНЯТИ З КУЩІВ: ${totalWeight} КГ ЯГОДИ (Ліміт: ${currentLimit.toFixed(1)} кг)
+                </div>
+                <div class="print-line"></div>
+                <div style="text-align: center; font-size: 11px; margin-top: 30px;">Збір починаємо о 5:00. Гарного дня та чистого врожаю!</div>
+            `;
+            window.print();
+        }
+
+        window.onload = function() {
+            const currentLimit = getDailyLimit();
+            const limitInput = document.getElementById('admin-limit-input');
+            if (limitInput) limitInput.value = currentLimit;
+            
+            fetch(googleScriptUrl)
+                .then(res => res.json())
+                .then(data => {
+                    if(Array.isArray(data)) {
+                        globalOrdersArray = data;
+                        updateCart();
+                    }
+                }).catch(err => console.log("Синхронізація ліміту..."));
+        };
+    </script>
+</body>
+</html>
